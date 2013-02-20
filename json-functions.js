@@ -6,7 +6,6 @@
 
 function stringify(c) {
     var b = {};
-    if(typeof(c)!="object"){return(c.toString());};
     for(var i in c) {
         if(typeof(c[i])=="object") b[i]=translate(c[i]);
         if(typeof(c[i])=="function") {
@@ -19,7 +18,7 @@ function stringify(c) {
             }
         };
     }
-    return(b);
+    return(JSON.stringify(b));
 }
 
 //  The translate function just makes string-representations of object's functions.
