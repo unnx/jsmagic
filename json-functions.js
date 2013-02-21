@@ -61,5 +61,14 @@ function objectify(c) {
             }
         }
     }
-    return b;
+    return (b);
 }
+
+// Tests
+
+var a = {b: 0, c: 'hello', d: function(d){console.log('1/2 Test passed - ' + d);}};
+var e = {f: 0, g: 'hello', h: {i:{j:function(d){console.log('2/2 Test passed - ' + d);}}}};
+objectify(JSON.parse(stringify(a))).d(Date());
+objectify(JSON.parse(stringify(e))).h.i.j(Date());
+
+
