@@ -40,13 +40,19 @@ function translate(c) {
     return b;
 }
 
-//  The objectify function creates an object from a JSON-string, where strings
+//  The objectify function creates an object from a, where strings
 //  like '"a":"function(){return 0;}"' become a real functions.
 //
 // example: objectify('{"a":0,"b":"function(){return 0;}"}'); 
 //          returns an object: {a:0,b:function(){return 0;}}
 
 function objectify(c) {
+    return (compile(JSON.parse(c)));
+}
+
+//  The compile function just makes real functions from their string-representations.
+
+function compile(c) {
     var b = {};
     for(var i in c) {
         if(typeof(c[i])=="object"){b[i]=objectify(c[i])} else {
